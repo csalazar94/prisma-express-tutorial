@@ -10,7 +10,7 @@ class UserController {
     return res.status(201).send(this.userService.addUser(user));
   };
 
-  getUsers = (_, res) => res.send(this.userService.getUsers());
+  getUsers = (_, res) => res.status(200).send(this.userService.getUsers());
 
   getUser = (req, res) => {
     const { id } = req.params;
