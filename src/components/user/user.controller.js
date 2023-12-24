@@ -1,20 +1,34 @@
-import User from './user.entities.js';
-
 class UserController {
   constructor(userService) {
     this.userService = userService;
   }
 
-  createUser = (req, res) => {
-    const user = new User(req.body.email, req.body.password, req.body.age);
-    return res.status(201).send(this.userService.addUser(user));
+  createUser = async (req, res) => {
+    try {
+      const user = await this.userService.addUser(req.body);
+      return res.status(201).send(user);
+    } catch (error) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
   };
 
-  getUsers = (_, res) => res.status(200).send(this.userService.getUsers());
+  getUsers = async (_, res) => {
+    try {
+      const users = await this.userService.getUsers();
+      return res.status(200).send(users);
+    } catch (error) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
 
-  getUser = (req, res) => {
-    const { id } = req.params;
-    return res.status(200).send(this.userService.getUser(id));
+  getUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await this.userService.getUser(Number(id));
+      return res.status(200).send(user);
+    } catch (error) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
   };
 }
 

@@ -1,19 +1,33 @@
+import { PrismaClient } from '@prisma/client';
+
 class UserService {
   constructor() {
-    this.users = [];
+    this.prisma = new PrismaClient();
   }
 
-  addUser = (user) => {
-    this.users.push(user);
-    return user;
+  addUser = async (user) => {
+    const { password, ...createdUser } = await this.prisma.user.create({
+      data: user,
+    });
+    return createdUser;
   };
 
-  getUsers = () => this.users;
+  getUsers = () => this.prisma.user.findMany({
+    select: {
+      id: true,
+      email: true,
+      age: true,
+    },
+  });
 
-  getUser = (id) => {
-    const user = this.users.find((u) => u.id === id);
-    return user;
-  };
+  getUser = (id) => this.prisma.user.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      email: true,
+      age: true,
+    },
+  });
 }
 
 export default UserService;
