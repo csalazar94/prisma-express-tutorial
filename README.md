@@ -1,8 +1,8 @@
-# Building a Flexible and Scalable Node.js Backend with Express: A Step-by-Step Tutorial
-This tutorial walks through the project structure, implementing the controller, service, router and using the dependency injection pattern in a nodejs express application.
+# Integrating Prisma with Express in a Clean and Scalable Manner
+Learn how to seamlessly integrate Prisma with Express for a clean and scalable Node.js backend. Explore efficient data modeling, type-safe operations, and robust database interactions.
 
 # Installation
-You can follow this tutorial and understand how this project work on this medium [link](https://medium.com/@csalazar94/building-a-flexible-and-scalable-node-js-backend-with-express-a-step-by-step-tutorial-5a8633335b48).
+You can follow this tutorial and understand how this project work on this medium [link](https://medium.com/@csalazar94/integrating-prisma-with-express-in-a-clean-and-scalable-manner-d10b9c9767d3).
 
 ```
 npm install
